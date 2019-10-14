@@ -6,10 +6,10 @@ public class TempConvApp {
 
 	public static void main(String[] args) {
 		
-		String choice = "y";
+		    String choice = "y";
 	        while (choice.equalsIgnoreCase("y")) {
 	       
-	        	float temperature;
+	        float temperature;
 		    sc = new Scanner(System.in);
 		 
 		    System.out.print("Enter temperature in Fahrenheit");
