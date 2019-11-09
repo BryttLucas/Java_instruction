@@ -5,7 +5,7 @@ public class GameClassApp {
        System.out.println("Welcome to The Guessing Game!\n ");
        System.out.println("Enter a number between 1 and 100.");
 	  
-	}
+	
        if (guess == answer) {
     	   System.out.println("Goodjob, You got it right.");
        }

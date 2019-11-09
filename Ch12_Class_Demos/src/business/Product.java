@@ -23,12 +23,18 @@ public class Product {
         price = 0;
     }
 
-    public Product(String string, String string2, String string3, double d) {
-		// TODO Auto-generated constructor stub
+	
+	
+
+	public Product(String code, String description, double price) {
+		super();
+		this.code = code;
+		this.description = description;
+		this.price = price;
 	}
 
-	
-	
+
+
 
 	/**
      * Sets the product's code.

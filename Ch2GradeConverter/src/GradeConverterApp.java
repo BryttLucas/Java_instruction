@@ -9,25 +9,37 @@ public class GradeConverterApp {
 		
 		String choice = ("y");
 		while (choice.equalsIgnoreCase("y"))  {
-			
-			System.out.println("Enter a Number:");
-		    int number = sc.nextInt();
-		    int i=0;
-		}
-			 if ( 88 <=100);
-				System.out.println("Letter Grade is A.");
-     	     else if  (number 80 <=87);
-			    System.out.println("Letter Grade is B.");
-		     else if  (number 67 <=79);
-				System.out.println("Letter Grade is C.");
-			 else if  (number 60 <=66);
-				System.out.println("Letter Grade is D.");
-			 else if  (number 59 <=0)
-				System.out.println("Letter Grade is F.");
-			
-		System.out.println("Continue? (y/n)");
-		choice = sc.next();
-		System.out.println();
-	}
-  }
+		
+			  
+		System.out.println("Enter a Number:");
+		       
+		       int x;
+		        x = sc.nextInt();
 
+		        if (x <= 100 && x >= 90) {
+		            System.out.println("Letter grade: A");
+		        }
+
+		        if(x <= 89 && x >= 80) {
+		            System.out.println("Letter grade: B");
+		        }
+
+		        if(x <= 79 && x >= 70) {
+		            System.out.println("Letter grade: C");
+		        }
+
+		        if(x <=69 && x >=60) {
+		            System.out.println("Letter grade: D");
+		        }
+
+		        if(x <=50 && x >=0) {
+		            System.out.println("Letter grade: F");
+		        }
+		        System.out.print("Continue? (y/n): ");
+		        choice = sc.next();
+		        System.out.println();
+		       
+        }
+		
+	}
+}

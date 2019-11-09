@@ -36,7 +36,6 @@ public class PRSconsoleApp {
 			case 2:
 				// get user
 				int id = Console.getInt("User ID: ");
-				// get the User that matches the id above
 				User u = getUser(id, users);
 				System.out.println(u);
 
@@ -75,7 +74,7 @@ public class PRSconsoleApp {
 				id = Console.getInt("Which id to delete ");
 			    u = getUser(id, users);
 				System.out.println(u);
-				users.remove(id -1);
+	     		users.remove(id -1);
 				
 				break;
 			case 6:

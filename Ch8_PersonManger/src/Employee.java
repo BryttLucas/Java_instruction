@@ -3,9 +3,10 @@ public class Employee {
 
 	public Employee() {
 		
-		public employee(String first, String last, String ssn)
-		public string getSsn()
-		public void getSsn(string ssn)
+		public Employee(String first, String last, String ssn);
+		
+		public String getSsn();
+		public void getSsn(String ssn);
 	
 	}
 

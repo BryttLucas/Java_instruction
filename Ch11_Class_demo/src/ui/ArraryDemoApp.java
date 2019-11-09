@@ -12,6 +12,7 @@ public class ArraryDemoApp {
 	prices[2] = 11.95;
 	prices[3] = 9.95;
 	
+	int i=0;
 	for (int i =0; i < prices.length; i++);
 	System.out.println(prices[i]);
 	
@@ -24,27 +25,27 @@ public class ArraryDemoApp {
 		System.out.println("for each loop of prices");
 		for (double p = price) {
 			System.out.println(price);
-			
-		String[] letter= new Sting[10];
+				
+		String[] letter = new Sting[10];
 		Arrays.fill(letters, "a");
 		
 		for(String str: letters){
 		System.out.println(str);
 		}
 		// sort array of students
-		System.out.println("Sorted students:");
+		System.out.println("Sorted students:");{
 		Arrays.parallelSort(students);
         for (string student:students);
 		System.out.println(student[i]);
 
 		}	
-		System.out.println("sorted price;");
+		System.out.println("sorted price;");{
 		Arrays.sort(prices);
 		System.out.println(p[i]);
-	   }
-	{
+		}
+	
 		System.out.println("comparing arrays, coping");
-		int[] numbers = {4,7,2,5,0}
+		int[] numbers = {4,7,2,5,0};
     	int[] numbers = numbers1;
 		int[] numbers = Arrays.copyOf(numbers1, 5);
 		System.out.println(Arrays.deepEquals(number1, number2));
@@ -64,8 +65,11 @@ public class ArraryDemoApp {
 			for (int i: number3) {
 			System.out.println(i);
 		}
-		
+			}
+		    }
+		}
+
+		    
 				
 		
-		}	
-}}}
+		

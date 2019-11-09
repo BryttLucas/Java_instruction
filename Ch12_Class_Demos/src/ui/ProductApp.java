@@ -11,19 +11,20 @@ public class ProductApp {
 
 	  public static void main(String[] args) {
 		System.out.println("Welcome to the Product App");
-		products.add(new Product("java","Murach's", "Java", 57.50));
-		products.add(new Product("c#","Murach's", "C#", 59.50));
+		products.add(new Product("java","Murach's",  57.50));
+		products.add(new Product("c#","Murach's", 59.50));
 		
 		
 		// list product
 		printList(products);
 		
 		// add products
+		System.out.println("Add a product:");
 		String code = Console.getString("code?:");
 		String desc = Console.getString("Description?:");
-		double price = Console.getString("code?:");
+		double price = Console.getDouble("price?:");
 		
-		Product p = new Product(code, desc, price?; )
+		Product p = new Product(code, desc, price);
 		products.add(p);
 		printList(products);
 		
@@ -47,14 +48,16 @@ public class ProductApp {
 	    for (Product prod: products) {
 	    	if (prod.getCode().equalsIgnoreCase(code)) {
 	             p = prod;
-	    }
+	    	}
+		}
 	    return p;
-	    }
-		
+	}
 		
 	
-     private static void  printList(List<Product>list);
-     System.out.println(p);
-}
+     private static void printList(List<Product> list) {
+    	 for (Product p: list) {
+    		 System.out.println(p);
+    	 }
+     }
 
 }

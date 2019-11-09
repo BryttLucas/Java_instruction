@@ -8,5 +8,5 @@ public interface UserInput {
        double getDouble(String prompt double min, double max);
        
        String getString(String prompt);
-       String getString(String prompt Strins s1, String s2);
+       String getString(String prompt Strings s1, String s2);
 }

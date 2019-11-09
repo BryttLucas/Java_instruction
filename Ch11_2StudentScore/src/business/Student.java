@@ -1,5 +1,6 @@
 package business;
 
+
 public class Student implements Comparable {
 	private String firstName;
 	private String lastName;
@@ -42,11 +43,6 @@ public class Student implements Comparable {
 	}
 
 	@Override
-	public String toString() {
-		return lastName+ "," +firstName+ ":" +score;
-	}
-
-	@Override
 	public int compareTo(Object o) {
 		Student s2 =(Student)o;
 		int i = 0;
@@ -55,6 +51,9 @@ public class Student implements Comparable {
 			i = this.firstName.compareToIgnoreCase(s2.firstName);
 		return 0;
 	}
-	
+	@Override
+	public String toString() {
+		return lastName+ "," +firstName+ ":" +score;
+	}
 	
 }
