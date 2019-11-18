@@ -1,5 +1,5 @@
 
-public class JOptionPaneIO implements UserIO {
+public abstract  class JOptionPaneIO implements UserIO {
 
 	@Override
 	public int getInt(String prompt) {

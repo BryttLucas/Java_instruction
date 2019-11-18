@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ConsoleIO implements UserIO {
+public abstract class ConsoleIO implements UserIO {
 
 	         Scanner sc = new Scanner(System.in);
 	

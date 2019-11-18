@@ -4,17 +4,18 @@ public class Person {
 	public Person() {
    // display a Welcome message
       System.out.println("Welcome to Person Manger!\n\n");
-      System.out.println();
+      System.out.println(); 
+	}
           
     private String first;
   	private String last;
   	private String customerNumber;
  
   	public Person(String first, String last, String customer number) {
-  		this.first = first;
-  		this.last = last;
-  		this.customerNumber = customerNumber;
-
+  		this.String First = first;
+  		this.String Last = last;
+  		this.String CustomerNumber = customerNumber;
+  	}
 	public String getFirst() {
 		return first;
 	}

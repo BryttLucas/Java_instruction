@@ -9,7 +9,7 @@ public class WizardInventoryApp {
 	 
 		System.out.println("Command Menu");	
 		
-		System.out.println("show -Show all item\n"+"grab - Grab an item\n"+
+		System.out.println("show -Show all item\n"+"grab - Grab an item\n"+ "New - Add item\n" +
 		"edit - Edit an item\n"+"drop - Drop an item\n"+"exit - Exit Program");
 		System.out.println();
 		
@@ -33,6 +33,7 @@ public class WizardInventoryApp {
 	    		   System.out.println("Inventory is full.");
 	    		   continue;
 	    	   }
+	           case "New Item":
 	    	     String newItem =console.getString("Name:");
 	    	     inventory.add(newItem);
 	    	        continue;

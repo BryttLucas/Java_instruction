@@ -1,5 +1,5 @@
 
-public class IOFactory implements UserIO {
+public abstract class IOFactory implements UserIO {
 
 	@Override
 	public int getInt(String prompt) {

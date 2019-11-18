@@ -5,21 +5,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(uniqueConstraints=@UniqueConstraint(name = "UIDX_username", columnNames = {"username"}))
 public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@Column(length=20, nullable=false)
 	private String username;
+	@Column(length=10, nullable=false)
 	private String password;
+	@Column(length=20, nullable=false)
 	private String firstname;
+	@Column(length=20, nullable=false)
 	private String lastname;
+	@Column(length=12, nullable=false)
 	private String phone;
+	@Column(length=75, nullable=false)
 	private String email;
 	private boolean isReviewer;
-	@Column(name = "isActive")
-	private boolean active;
+//	@Column(name = "isActive")
+	private boolean isActive;
 	public int getId() {
 		return id;
 	}
@@ -69,10 +78,10 @@ public class User {
 		this.isReviewer = isReviewer;
 	}
 	public boolean isActive() {
-		return active;
+		return isActive;
 	}
 	public void setActive(boolean active) {
-		this.active = active;
+		this.isActive = active;
 	}
 	public User() {
 		

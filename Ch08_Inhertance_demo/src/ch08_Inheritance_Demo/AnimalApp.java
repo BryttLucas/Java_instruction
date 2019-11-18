@@ -1,17 +1,19 @@
+package ch08_Inheritance_Demo;
 
-public abstract class Aminal {
-      
-	protected String name;
-	private int limbs;
-	private int age;
-	private String type;
+public abstract class AnimalApp {
 	
-	public Aminal(String name, int limbs, int age, String type);
-	  this.name = name;
-	  this.limbs = limbs;
-	  this.age = age;
-	  this.type = type;
-	  
+	protected String name;
+	protected int limbs;
+	protected int age;
+	protected String type;
+	
+	public AnimalApp(String name, int limbs, int age, String type) {
+		this.name=name;
+		this.limbs=limbs;
+		this.age=age;
+		this.type=type;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -43,7 +45,14 @@ public abstract class Aminal {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-			  
 	
+	public void eat() {
+		System.out.println(name + " eats.");
+		
+	}
+	
+	public void sleep() {
+		System.out.println(name + " sleeps.");
+	}
+
 }

@@ -1,11 +1,8 @@
 package roshamboapp;
 
 public class Player1Class {
-	package roshamboapp;
-
-	public class Player1 extends Player
-	{
-	public Player1(){
+	
+	public Player1Class(){
 	super();
 	}
 	  
@@ -44,4 +41,3 @@ public class Player1Class {
 	public abstract Roshambo generateRoshambo();
 	}
   }
-}

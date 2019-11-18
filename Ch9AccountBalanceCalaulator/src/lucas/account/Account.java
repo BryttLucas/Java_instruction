@@ -1,8 +1,9 @@
 package lucas.account;
 import lucas.interFace.Balanceable;
+import lucas.interFace.Depositeable;
 import lucas.interFace.Withdrawable;
 
-public class Account implements Depositable, Withdrawable, Balanceable {
+public class Account implements Depositeable, Withdrawable, Balanceable {
 
 	protected double balance;
 	

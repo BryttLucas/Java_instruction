@@ -15,7 +15,6 @@ public class PRSConsoleApp {
 
 	public static void main(String[] args) {
 		
-		
 		System.out.println("Welcome to the PRS Console!");
 		UserDB udb = new UserDB();
 		ProductDB pdb = new ProductDB();
@@ -39,7 +38,14 @@ public class PRSConsoleApp {
 			default:
 				System.out.println("Error. Invalid command.");
 			}
+		
 		}
+		
+		
+		
+		
+		System.out.println("Deuces");
+
 	}
 	
 	private static String printMainMenu() {
@@ -81,7 +87,7 @@ public class PRSConsoleApp {
 				}
 				break;
 			case 3:
-				System.out.println("Add User:");
+				System.out.println("ADD USER:");
 				String uname = Console.getString("Username: ");
 				String pw = Console.getString("Password: ");
 				String fname = Console.getString("First name: ");
@@ -95,18 +101,18 @@ public class PRSConsoleApp {
 				break;
 			case 4:
 				//update
-				System.out.println("Update User:");
+				System.out.println("UPDATE USER:");
 				id = Console.getInt("What ID would you like to update? ");
 				String choice = Console.getString("Would you like to change Username, Password,\n"
 						+ "FirstName, LastName, PhoneNumber, or Email? ");
 				String change = Console.getString("What do you want to make "+choice+"? ");
-				int rowCount =  udb.updateUser(id, choice,change);
+				int rowCount = udb.updateUser(id, choice, change);
 				System.out.println(rowCount + " rows changed.");
 				break;
 			case 5:
 				//delete
 				System.out.println("Delete a User:");
-				id = Console.getInt("What is the ID of the user you would like to delete? ");
+				id = Console.getInt("What is the ID of the user you'd like to delete? ");
 				u = null;
 				try {
 					u = udb.get(id);
@@ -114,7 +120,7 @@ public class PRSConsoleApp {
 					e.printStackTrace();
 				}
 				System.out.println(u);
-				choice = Console.getString("Are you sure you want to delete? This cannot be reversed. y/n ");
+				choice = Console.getString("Are you sure you want to delete? This cannot be undone. y/n ");
 				if(choice.equalsIgnoreCase("y")) {
 					rowCount = udb.deleteUser(id);
 					System.out.println(rowCount + " rows deleted.");
@@ -156,7 +162,7 @@ public class PRSConsoleApp {
 				break;
 			case 3:
 				System.out.println("Add a Product");
-				String prompt = Console.getString("View a list of vendors to identify\n"
+				String prompt = Console.getString("Would you like to view a list of vendors to identify\n"
 						+ "your Vendor's ID? ");
 				List<Vendor> vendors=null;
 				if(prompt.equalsIgnoreCase("y")) {
@@ -192,10 +198,10 @@ public class PRSConsoleApp {
 			case 5:
 				//delete
 				System.out.println("Delete a Product:");
-				id = Console.getInt("What is the ID of the Product you would like to delete? ");
+				id = Console.getInt("What is the ID of the Product you'd like to delete? ");
 				p = pdb.get(id);
 				System.out.println(p);
-				choice = Console.getString("Are you sure you want to delete? This cannot be reversed. y/n ");
+				choice = Console.getString("Are you sure you want to delete? This cannot be undone. y/n ");
 				if(choice.equalsIgnoreCase("y")) {
 					rowCount = pdb.deleteProduct(id);
 					System.out.println(rowCount + " rows deleted.");
@@ -285,11 +291,11 @@ public class PRSConsoleApp {
 	
 	private static String getMenu(String choice) {
 		String str = "MENU\n"+
-					"1  - List " +choice+"\n"+
-					"2  - Get " + choice+"\n"+
-					"3  - Add "+ choice+"\n"+
-					"4  - Update "+choice+"\n"+
-					"5  - Delete "+choice+"\n"+
+					"1  - List"  +choice+"\n"+
+					"2  - Get"   +choice+"\n"+
+					"3  - Add"   +choice+"\n"+
+					"4  - Update"+choice+"\n"+
+					"5  - Delete"+choice+"\n"+
 					"99 - Back to main menu\n"+
 					"Command - ";
 		return str;

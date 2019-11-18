@@ -1,4 +1,3 @@
-import util.Console;
 
 public class LineItemApp {
 
