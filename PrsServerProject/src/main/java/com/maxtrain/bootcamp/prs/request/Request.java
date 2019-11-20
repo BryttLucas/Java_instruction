@@ -1,7 +1,6 @@
 package com.maxtrain.bootcamp.prs.request;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,7 +26,7 @@ public class Request {
 	@Column(length=255, nullable=false)
 	private String justification;
 	@Column(nullable=false)
-	private LocalDate dateNeeded;
+	private Date dateNeeded;
 	@Column(length=25, nullable=false)
 	private String deliveryMode;
 	@Column(columnDefinition="varchar(20) not null default 'NEW")
@@ -35,14 +34,14 @@ public class Request {
 	@Column(columnDefinition="decimal(10,2) NOT NULL DEFAULT 0.0")
 	private double total;
 	@Column(columnDefinition="datetime default current_timestamp not null")
-	private LocalDateTime submittedDate;
+	private Date submittedDate;
 	@Column(length=100, nullable=false)
 	private String reasonForRejection;
 
 	public Request () {}
 		
-	public Request(int id, User user, String description, String justification, LocalDate dateNeeded,
-			String deliveryMode, String status, double total, LocalDateTime submittedDate, String reasonForRejection) {
+	public Request(int id, User user, String description, String justification, Date dateNeeded,
+			String deliveryMode, String status, double total, Date submittedDate, String reasonForRejection) {
 		
 		super();
 		this.id = id;
@@ -89,11 +88,11 @@ public class Request {
 		this.justification = justification;
 	}
 
-	public LocalDate getDateNeeded() {
+	public Date getDateNeeded() {
 		return dateNeeded;
 	}
 
-	public void setDateNeeded(LocalDate dateNeeded) {
+	public void setDateNeeded(Date dateNeeded) {
 		this.dateNeeded = dateNeeded;
 	}
 
@@ -121,12 +120,12 @@ public class Request {
 		this.total = total;
 	}
 
-	public LocalDateTime getSubmittedDate() {
+	public Date getSubmittedDate() {
 		return submittedDate;
 	}
 
-	public void setSubmittedDate(LocalDateTime submittedDate) {
-		this.submittedDate = submittedDate;
+	public void setSubmittedDate(Date date) {
+		this.submittedDate = date;
 	}
 
 	public String getReasonForRejection() {
@@ -136,7 +135,7 @@ public class Request {
 	public void setReasonForRejection(String reasonForRejection) {
 		this.reasonForRejection = reasonForRejection;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Request [id=" + id + ", user=" + user + ", description=" + description + ", justification="

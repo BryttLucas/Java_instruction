@@ -83,8 +83,7 @@ public class User {
 	public void setActive(boolean active) {
 		this.isActive = active;
 	}
-	public User() {
-		
+	public User() {		
 	}
 	
 }

@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.maxtrain.bootcamp.prs.util.JsonResponse;
 
 @CrossOrigin
-@Controller
+@RestController
 @RequestMapping(path="/product")
 public class ProductController {
 
@@ -26,12 +28,12 @@ public class ProductController {
 
 
 @GetMapping()
-	public @ResponseBody JsonResponse getAll( ) {
+	public JsonResponse getAll( ) {
 	Iterable<Product> product = productRepo.findAll();
 	return JsonResponse.getInstance(product);  
 }
 @GetMapping("/{id}")
-public @ResponseBody JsonResponse get(@PathVariable Integer id) {
+public JsonResponse get(@PathVariable Integer id) {
 	try {
 		if (id==null) return JsonResponse.getInstance("Parameter id cannot be null");
 		Optional<Product> product = productRepo.findById(id);
@@ -54,7 +56,7 @@ private JsonResponse save(Product product) {
 	}
 }
 @PostMapping()   
-public @ResponseBody JsonResponse Insert(@RequestBody Product product) {
+public JsonResponse Insert(@RequestBody Product product) {
 	try {
 	return save(product);
 	}catch (Exception ex) {
@@ -62,7 +64,7 @@ public @ResponseBody JsonResponse Insert(@RequestBody Product product) {
 	}
 }
 @PutMapping("{/id}")
-public @ResponseBody JsonResponse update(@RequestBody Product product, @PathVariable Integer id) { 
+public JsonResponse update(@RequestBody Product product, @PathVariable Integer id) { 
 	try {
 	if(id !=product.getId())  return JsonResponse.getInstance("Parameter id cannot be null");
 			return save(product);
@@ -72,7 +74,7 @@ public @ResponseBody JsonResponse update(@RequestBody Product product, @PathVari
 }
 
 @DeleteMapping("{/id}")
-public @ResponseBody JsonResponse delete(@PathVariable Integer id) {
+public  JsonResponse delete(@PathVariable Integer id) {
 		try {
 			if(id == null) return JsonResponse.getInstance("Parameter id cannot be null"); 
 			Optional<Product> product = productRepo.findById(id);

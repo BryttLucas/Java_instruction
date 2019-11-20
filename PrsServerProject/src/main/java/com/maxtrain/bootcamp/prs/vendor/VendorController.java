@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.maxtrain.bootcamp.prs.util.JsonResponse;
 
 @CrossOrigin
-@Controller
+@RestController
 @RequestMapping(path="/vendor")
 public class VendorController {
 
@@ -56,15 +57,15 @@ public class VendorController {
 		}
 	}
 	@PostMapping()   
-	public @ResponseBody JsonResponse Insert(@RequestBody Vendor vendor) {
+	public JsonResponse Insert(@RequestBody Vendor vendor) {
 		return save(vendor);
 	}
 	@PutMapping("/{id}")
-	public @ResponseBody JsonResponse update(@RequestBody Vendor vendor, @PathVariable Integer id) {
+	public JsonResponse update(@RequestBody Vendor vendor, @PathVariable Integer id) {
 		return save(vendor);
 	}
 	@DeleteMapping("/{id}")
-	public @ResponseBody JsonResponse delete(@PathVariable Integer id) {
+	public JsonResponse delete(@PathVariable Integer id) {
 		try {
 			Optional<Vendor> vendor = vendorRepo.findById(id);
 			if(!vendor.isPresent()) {

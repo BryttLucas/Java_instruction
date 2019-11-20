@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.maxtrain.bootcamp.prs.util.JsonResponse;
 
 @CrossOrigin
-@Controller
+@RestController
 @RequestMapping(path="/users")
 public class UserController {
 
@@ -25,7 +26,7 @@ public class UserController {
 	private UserRepository userRepo;
 
 	@GetMapping("/authenticate")
-	public @ResponseBody JsonResponse authenticate(@RequestBody User user) {
+	public JsonResponse authenticate(@RequestBody User user) {
 		String username = user.getUsername();
 		String password = user.getPassword();
 		try {
@@ -39,12 +40,12 @@ public class UserController {
 	}
 	
 	@GetMapping()
- 	public @ResponseBody JsonResponse getAll( ) {
+ 	public JsonResponse getAll( ) {
 		Iterable<User> user = userRepo.findAll();
 		return JsonResponse.getInstance(user);  
 	}
 	@GetMapping("/{id}")
-	public @ResponseBody JsonResponse get(@PathVariable Integer id) {
+	public JsonResponse get(@PathVariable Integer id) {
 		try {
 			Optional<User> u = userRepo.findById(id);
 			if(!u.isPresent()) {
@@ -64,15 +65,15 @@ public class UserController {
 		}
 	}
 	@PostMapping()   
-	public @ResponseBody JsonResponse Insert(@RequestBody User user) {
+	public  JsonResponse Insert(@RequestBody User user) {
 		return save(user);
 	}
 	@PutMapping("{/id}")
-	public @ResponseBody JsonResponse update(@RequestBody User user, @PathVariable Integer id) {
+	public  JsonResponse update(@RequestBody User user, @PathVariable Integer id) {
 		return save(user);
 	}
 	@DeleteMapping("{/id}")
-	public @ResponseBody JsonResponse delete(@PathVariable Integer id) {
+	public JsonResponse delete(@PathVariable Integer id) {
 		try {
 			Optional<User> u = userRepo.findById(id);
 			if(!u.isPresent()) {
