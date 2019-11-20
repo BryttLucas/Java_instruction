@@ -10,39 +10,38 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import com.maxtrain.bootcamp.prs.user.User;
 
-
 @Entity
-
 public class Request {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@ManyToOne(optional=false)           
-	@JoinColumn(name="userId")
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "userId")
 	private User user;
-	@Column(length=100, nullable=false)
+	@Column(length = 100, nullable = false)
 	private String description;
-	@Column(length=255, nullable=false)
+	@Column(length = 255, nullable = false)
 	private String justification;
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private Date dateNeeded;
-	@Column(length=25, nullable=false)
+	@Column(length = 25, nullable = false)
 	private String deliveryMode;
-	@Column(columnDefinition="varchar(20) not null default 'NEW")
+	@Column(columnDefinition = "varchar(20) not null default 'NEW")
 	private String status;
-	@Column(columnDefinition="decimal(10,2) NOT NULL DEFAULT 0.0")
+	@Column(columnDefinition = "decimal(10,2) NOT NULL DEFAULT 0.0")
 	private double total;
-	@Column(columnDefinition="datetime default current_timestamp not null")
+	@Column(columnDefinition = "datetime default current_timestamp not null")
 	private Date submittedDate;
-	@Column(length=100, nullable=false)
+	@Column(length = 100, nullable = false)
 	private String reasonForRejection;
 
-	public Request () {}
-		
-	public Request(int id, User user, String description, String justification, Date dateNeeded,
-			String deliveryMode, String status, double total, Date submittedDate, String reasonForRejection) {
-		
+	public Request() {
+	}
+
+	public Request(int id, User user, String description, String justification, Date dateNeeded, String deliveryMode,
+			String status, double total, Date submittedDate, String reasonForRejection) {
+
 		super();
 		this.id = id;
 		this.user = user;
@@ -135,7 +134,7 @@ public class Request {
 	public void setReasonForRejection(String reasonForRejection) {
 		this.reasonForRejection = reasonForRejection;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Request [id=" + id + ", user=" + user + ", description=" + description + ", justification="
@@ -143,5 +142,5 @@ public class Request {
 				+ ", total=" + total + ", submittedDate=" + submittedDate + ", reasonForRejection=" + reasonForRejection
 				+ "]";
 	}
-	
+
 }

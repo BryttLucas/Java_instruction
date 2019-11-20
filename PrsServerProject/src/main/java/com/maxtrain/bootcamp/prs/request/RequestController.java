@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.maxtrain.bootcamp.prs.util.JsonResponse;
@@ -30,7 +29,7 @@ public class RequestController {
 	private RequestRepository requestRepo;
 
 	@GetMapping()
-	public @ResponseBody JsonResponse getAll() {
+	public JsonResponse getAll() {
 		Iterable<Request> request = requestRepo.findAll();
 		return JsonResponse.getInstance(request);
 	}
@@ -63,9 +62,8 @@ public class RequestController {
 		try {
 			request.setStatus(REQUEST_STATUS_NEW);
 			return save(request);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
+		} catch (Exception ex) {
+			return JsonResponse.getInstance(ex);
 		}
 	}
 
@@ -80,18 +78,22 @@ public class RequestController {
 			return JsonResponse.getInstance(ex);
 		}
 	}
+
 	@DeleteMapping("/{id}")
 	public JsonResponse delete(@PathVariable Integer id) {
 		try {
-			if(id == null) return JsonResponse.getInstance("Parameter id cannot be null");
+			if (id == null)
+				return JsonResponse.getInstance("Parameter id cannot be null");
 			Optional<Request> v = requestRepo.findById(id);
-			if(!v.isPresent()) return JsonResponse.getInstance("Request not found");
+			if (!v.isPresent())
+				return JsonResponse.getInstance("Request not found");
 			requestRepo.deleteById(v.get().getId());
 			return JsonResponse.getInstance(v.get());
 		} catch (Exception ex) {
 			return JsonResponse.getInstance(ex);
 		}
 	}
+
 	@GetMapping("/reviews/{userId}")
 	public JsonResponse getRequestWithStatusOfReview(@PathVariable Integer userId) {
 		try {
@@ -103,7 +105,7 @@ public class RequestController {
 			return JsonResponse.getInstance(ex);
 		}
 	}
-	
+
 	private JsonResponse setRequestStatus(Request request, String status) {
 		try {
 			request.setStatus(status);

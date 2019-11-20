@@ -3,7 +3,6 @@ package com.maxtrain.bootcamp.prs.vendor;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,70 +11,83 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.maxtrain.bootcamp.prs.util.JsonResponse;
 
 @CrossOrigin
 @RestController
-@RequestMapping(path="/vendor")
+@RequestMapping(path = "/vendors")
 public class VendorController {
 
 	@Autowired
 	private VendorRepository vendorRepo;
 
-
 	@GetMapping("/")
-	public Iterable<Vendor> listVendor() {
-		return vendorRepo.findAll();
+	public JsonResponse getAll() {
+		return JsonResponse.getInstance(vendorRepo.findAll());
 	}
 
 	@GetMapping("/{id}")
-	public java.util.Optional<Vendor> getVendor(@PathVariable int id) {
-		return vendorRepo.findById(id);
-	}
-
-	@PostMapping("/")
-	public JsonResponse addVendor(@RequestBody Vendor vendor) {
-		JsonResponse jr = null;
-		vendorRepo.save(vendor);
+	public JsonResponse get(@PathVariable Integer id) {
 		try {
-			jr = JsonResponse.getInstance(vendorRepo.save(vendor));
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			jr = JsonResponse.getInstance(e);
-		}
-		return jr;
-	}
-	private JsonResponse save(Vendor v) {
-		try {
-			return JsonResponse.getInstance(vendorRepo.save(v));
-		}catch  (Exception ex) {
+			if (id == null)
+				return JsonResponse.getInstance("Paramenter id connot be null");
+			Optional<Vendor> Vendor = vendorRepo.findById(id);
+			if (!Vendor.isPresent()) {
+				return JsonResponse.getInstance("Vendor not Found!");
+			}
+			return JsonResponse.getInstance(Vendor.get());
+		} catch (Exception ex) {
 			return JsonResponse.getInstance(ex.getMessage());
 		}
 	}
-	@PostMapping()   
-	public JsonResponse Insert(@RequestBody Vendor vendor) {
-		return save(vendor);
+
+	private JsonResponse save(Vendor v) {
+		try {
+			return JsonResponse.getInstance(vendorRepo.save(v));
+		} catch (Exception ex) {
+			return JsonResponse.getInstance(ex.getMessage());
+		}
 	}
+
+	@PostMapping()
+	public JsonResponse insert(@RequestBody Vendor vendor) {
+		try {
+			return save(vendor);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return JsonResponse.getInstance(ex);
+		}
+	}
+
 	@PutMapping("/{id}")
 	public JsonResponse update(@RequestBody Vendor vendor, @PathVariable Integer id) {
-		return save(vendor);
+		try {
+			if (id == null)
+				return JsonResponse.getInstance("Paameter id connot be null");
+			return save(vendor);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return JsonResponse.getInstance(ex);
+
+		}
 	}
+
 	@DeleteMapping("/{id}")
 	public JsonResponse delete(@PathVariable Integer id) {
 		try {
+			if (id == null)
+				return JsonResponse.getInstance("Paameter id connot be null");
 			Optional<Vendor> vendor = vendorRepo.findById(id);
-			if(!vendor.isPresent()) {
+			if (!vendor.isPresent()) {
 				return JsonResponse.getInstance("Vendor not found");
 			}
 			vendorRepo.deleteById(id);
 			return JsonResponse.getInstance(vendor.get());
-		}catch (Exception ex) {
+		} catch (Exception ex) {
 			return JsonResponse.getInstance(ex.getMessage());
 		}
 
-   }
+	}
 }
