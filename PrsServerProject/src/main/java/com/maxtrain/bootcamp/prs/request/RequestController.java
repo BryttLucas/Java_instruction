@@ -30,8 +30,13 @@ public class RequestController {
 
 	@GetMapping()
 	public JsonResponse getAll() {
-		Iterable<Request> request = requestRepo.findAll();
-		return JsonResponse.getInstance(request);
+		try {
+			Iterable<Request> request = requestRepo.findAll();
+			return JsonResponse.getInstance(request);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
 	}
 
 	@GetMapping("/{id}")
@@ -65,8 +70,7 @@ public class RequestController {
 		} catch (Exception ex) {
 			return JsonResponse.getInstance(ex);
 		}
-	}
-
+	}			
 	@PutMapping("/{id}")
 	public JsonResponse update(@RequestBody Request request, @PathVariable Integer id) {
 		try {
@@ -84,11 +88,11 @@ public class RequestController {
 		try {
 			if (id == null)
 				return JsonResponse.getInstance("Parameter id cannot be null");
-			Optional<Request> v = requestRepo.findById(id);
-			if (!v.isPresent())
+			Optional<Request> request = requestRepo.findById(id);
+			if (!request.isPresent())
 				return JsonResponse.getInstance("Request not found");
-			requestRepo.deleteById(v.get().getId());
-			return JsonResponse.getInstance(v.get());
+			requestRepo.deleteById(request.get().getId());
+			return JsonResponse.getInstance(request.get());
 		} catch (Exception ex) {
 			return JsonResponse.getInstance(ex);
 		}

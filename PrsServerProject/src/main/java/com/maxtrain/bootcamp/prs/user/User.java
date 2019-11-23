@@ -27,7 +27,7 @@ public class User {
 	@Column(length = 75, nullable = false)
 	private String email;
 	private boolean isReviewer;
-	private boolean isActive;
+	private boolean isAdmin;
 
 	public int getId() {
 		return id;
@@ -97,19 +97,19 @@ public class User {
 		this.isReviewer = isReviewer;
 	}
 
-	public boolean isActive() {
-		return isActive;
+	public boolean isAdmin() {
+		return isAdmin;
 	}
 
-	public void setActive(boolean active) {
-		this.isActive = active;
+	public void setAdmin(boolean admin) {
+		this.isAdmin = admin;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstname=" + firstname
 				+ ", lastname=" + lastname + ", phone=" + phone + ", email=" + email + ", isReviewer=" + isReviewer
-				+ ", isActive=" + isActive + "]";
+				+ ", isAdmin=" + isAdmin + "]";
 	}
 
 }

@@ -27,13 +27,13 @@ public class Request {
 	private Date dateNeeded;
 	@Column(length = 25, nullable = false)
 	private String deliveryMode;
-	@Column(columnDefinition = "varchar(20) not null default 'NEW")
+	@Column(columnDefinition = "varchar(20) not null default 'NEW'")
 	private String status;
 	@Column(columnDefinition = "decimal(10,2) NOT NULL DEFAULT 0.0")
 	private double total;
 	@Column(columnDefinition = "datetime default current_timestamp not null")
 	private Date submittedDate;
-	@Column(length = 100, nullable = false)
+	@Column(length = 100)
 	private String reasonForRejection;
 
 	public Request() {

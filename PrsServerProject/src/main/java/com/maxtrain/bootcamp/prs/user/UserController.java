@@ -66,7 +66,7 @@ public class UserController {
 	}
 
 	@PostMapping()
-	public JsonResponse Insert(@RequestBody User user) {
+	public JsonResponse insert(@RequestBody User user) {
 		return save(user);
 	}
 
@@ -78,12 +78,12 @@ public class UserController {
 	@DeleteMapping("{/id}")
 	public JsonResponse delete(@PathVariable Integer id) {
 		try {
-			Optional<User> u = userRepo.findById(id);
-			if (!u.isPresent()) {
+			Optional<User> user = userRepo.findById(id);
+			if (!user.isPresent()) {
 				return JsonResponse.getInstance("User not found");
 			}
 			userRepo.deleteById(id);
-			return JsonResponse.getInstance(u.get());
+			return JsonResponse.getInstance(user.get());
 		} catch (Exception ex) {
 			return JsonResponse.getInstance(ex.getMessage());
 		}

@@ -28,9 +28,9 @@ public class Product {
 	private String name; // 150
 	@Column(columnDefinition = "decimal(10,2) NOT NULL DEFAULT 0.0")
 	private double price; // decimal
-	@Column(length = 255, nullable = false)
+	@Column(length = 255, nullable = true)
 	private String unit;
-	@Column(length = 255, nullable = false)
+	@Column(length = 255, nullable = true)
 	private String photoPath;
 
 	public Product() {
