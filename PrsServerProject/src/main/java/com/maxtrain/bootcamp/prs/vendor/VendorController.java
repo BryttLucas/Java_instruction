@@ -33,21 +33,22 @@ public class VendorController {
 		try {
 			if (id == null)
 				return JsonResponse.getInstance("Paramenter id connot be null");
-			Optional<Vendor> Vendor = vendorRepo.findById(id);
-			if (!Vendor.isPresent()) {
+			Optional<Vendor> vendor = vendorRepo.findById(id);
+			if (!vendor.isPresent()) {
 				return JsonResponse.getInstance("Vendor not Found!");
 			}
-			return JsonResponse.getInstance(Vendor.get());
-		} catch (Exception ex) {
-			return JsonResponse.getInstance(ex.getMessage());
+			return JsonResponse.getInstance(vendor.get());
+		} catch (Exception e) {
+			return JsonResponse.getInstance(e.getMessage());
 		}
 	}
 
-	private JsonResponse save(Vendor v) {
+	private JsonResponse save(Vendor vendor) {
 		try {
-			return JsonResponse.getInstance(vendorRepo.save(v));
-		} catch (Exception ex) {
-			return JsonResponse.getInstance(ex.getMessage());
+			Vendor vend = vendorRepo.save(vendor);
+			return JsonResponse.getInstance(vend);
+		} catch (Exception e) {
+			return JsonResponse.getInstance(e.getMessage());
 		}
 	}
 
@@ -55,9 +56,9 @@ public class VendorController {
 	public JsonResponse insert(@RequestBody Vendor vendor) {
 		try {
 			return save(vendor);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return JsonResponse.getInstance(ex);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
 		}
 	}
 
@@ -67,9 +68,9 @@ public class VendorController {
 			if (id == null)
 				return JsonResponse.getInstance("Paameter id connot be null");
 			return save(vendor);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return JsonResponse.getInstance(ex);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
 
 		}
 	}
@@ -85,8 +86,8 @@ public class VendorController {
 			}
 			vendorRepo.deleteById(id);
 			return JsonResponse.getInstance(vendor.get());
-		} catch (Exception ex) {
-			return JsonResponse.getInstance(ex.getMessage());
+		} catch (Exception e) {
+			return JsonResponse.getInstance(e.getMessage());
 		}
 
 	}

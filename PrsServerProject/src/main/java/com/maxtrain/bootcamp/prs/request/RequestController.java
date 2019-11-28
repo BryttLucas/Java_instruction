@@ -19,11 +19,11 @@ import com.maxtrain.bootcamp.prs.util.JsonResponse;
 @RestController
 @RequestMapping(path = "/requests")
 public class RequestController {
-	private static final String REQUEST_STATUS_NEW = "NEW";
-	private static final String REQUEST_STATUS_EDIT = "EDIT";
-	private static final String REQUEST_STATUS_REVIEW = "REVIEW";
-	private static final String REQUEST_STATUS_APPROVE = "APPROVE";
-	private static final String REQUEST_STATUS_REJECTED = "REJECTED";
+	public static final String REQUEST_STATUS_NEW = "NEW";
+	public static final String REQUEST_STATUS_EDIT = "EDIT";
+	public static final String REQUEST_STATUS_REVIEW = "REVIEW";
+	public static final String REQUEST_STATUS_APPROVE = "APPROVE";
+	public static final String REQUEST_STATUS_REJECTED = "REJECTED";
 
 	@Autowired
 	private RequestRepository requestRepo;

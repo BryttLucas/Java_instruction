@@ -39,18 +39,21 @@ public class ProductController {
 				return JsonResponse.getInstance("Product not found");
 			}
 			return JsonResponse.getInstance(product.get());
-		} catch (Exception ex) {
-			return JsonResponse.getInstance(ex);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
 		}
 	}
 
 	private JsonResponse save(Product product) {
 		try {
-			return JsonResponse.getInstance(productRepo.save(product));
-		} catch (IllegalArgumentException ex) {
+			Product prod = productRepo.save(product);
+			return JsonResponse.getInstance(prod);
+		} catch (IllegalArgumentException e) {
 			return JsonResponse.getInstance("Parameter product cannot be null");
-		} catch (Exception ex) {
-			return JsonResponse.getInstance(ex);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
 		}
 	}
 
@@ -58,34 +61,37 @@ public class ProductController {
 	public JsonResponse Insert(@RequestBody Product product) {
 		try {
 			return save(product);
-		} catch (Exception ex) {
-			return JsonResponse.getInstance(ex);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
 		}
 	}
 
-	@PutMapping("{/id}")
+	@PutMapping("/{id}")
 	public JsonResponse update(@RequestBody Product product, @PathVariable Integer id) {
 		try {
 			if (id != product.getId())
-				return JsonResponse.getInstance("Parameter id cannot be null");
+				return JsonResponse.getInstance("Parameter id cannot be null.");
 			return save(product);
-		} catch (Exception ex) {
-			return JsonResponse.getInstance(ex);
+		} catch (Exception e) {
+			e.getStackTrace();
+			return JsonResponse.getInstance(e);
 		}
 	}
 
-	@DeleteMapping("{/id}")
+	@DeleteMapping("/{id}")
 	public JsonResponse delete(@PathVariable Integer id) {
 		try {
 			if (id == null)
-				return JsonResponse.getInstance("Parameter id cannot be null");
+				return JsonResponse.getInstance("Parameter id cannot be null.");
 			Optional<Product> product = productRepo.findById(id);
 			if (!product.isPresent())
-				return JsonResponse.getInstance("product not found");
+				return JsonResponse.getInstance("Product not found.");
 			productRepo.deleteById(product.get().getId());
 			return JsonResponse.getInstance(product.get());
-		} catch (Exception ex) {
-			return JsonResponse.getInstance(ex);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
 
 		}
 	}

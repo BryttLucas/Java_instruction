@@ -46,6 +46,8 @@ public class UserController {
 	@GetMapping("/{id}")
 	public JsonResponse get(@PathVariable Integer id) {
 		try {
+			if (id == null)
+				return JsonResponse.getInstance("Parameter id cannot be null.");
 			Optional<User> u = userRepo.findById(id);
 			if (!u.isPresent()) {
 				return JsonResponse.getInstance("User not found");
@@ -67,15 +69,28 @@ public class UserController {
 
 	@PostMapping()
 	public JsonResponse insert(@RequestBody User user) {
-		return save(user);
+		try {
+			return save(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
 	}
 
-	@PutMapping("{/id}")
+	@PutMapping("/{id}")
 	public JsonResponse update(@RequestBody User user, @PathVariable Integer id) {
-		return save(user);
+		try {
+			if (id == null)
+				return JsonResponse.getInstance("Parameter id cannot be null.");
+			return save(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+
 	}
 
-	@DeleteMapping("{/id}")
+	@DeleteMapping("/{id}")
 	public JsonResponse delete(@PathVariable Integer id) {
 		try {
 			Optional<User> user = userRepo.findById(id);
