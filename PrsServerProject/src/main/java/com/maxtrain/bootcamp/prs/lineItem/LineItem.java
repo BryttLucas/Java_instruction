@@ -71,4 +71,10 @@ public class LineItem {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+
+	@Override
+	public String toString() {
+		return "LineItem [id=" + id + ", quantity=" + quantity + ", request=" + request + ", product=" + product + "]";
+	}
+	
 }

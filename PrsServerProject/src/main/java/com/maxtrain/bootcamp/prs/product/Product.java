@@ -37,7 +37,7 @@ public class Product {
 		super();
 	}
 
-	public Product(int id, Vendor vendor, String partNamber, String name, double price, String unit, String photoPath) {
+	public Product(int id, Vendor vendor, String partNumber, String name, double price, String unit, String photoPath) {
 		super();
 		this.id = id;
 		this.vendor = vendor;

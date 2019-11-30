@@ -33,10 +33,10 @@ public class ProductController {
 	public JsonResponse get(@PathVariable Integer id) {
 		try {
 			if (id == null)
-				return JsonResponse.getInstance("Parameter id cannot be null");
+				return JsonResponse.getInstance("Parameter id cannot be null.");
 			Optional<Product> product = productRepo.findById(id);
 			if (!product.isPresent()) {
-				return JsonResponse.getInstance("Product not found");
+				return JsonResponse.getInstance("Product not found.");
 			}
 			return JsonResponse.getInstance(product.get());
 		} catch (Exception e) {
@@ -85,8 +85,9 @@ public class ProductController {
 			if (id == null)
 				return JsonResponse.getInstance("Parameter id cannot be null.");
 			Optional<Product> product = productRepo.findById(id);
-			if (!product.isPresent())
+			if (!product.isPresent()) {
 				return JsonResponse.getInstance("Product not found.");
+			}
 			productRepo.deleteById(product.get().getId());
 			return JsonResponse.getInstance(product.get());
 		} catch (Exception e) {

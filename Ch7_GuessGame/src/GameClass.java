@@ -10,7 +10,7 @@ public class GameClass {
        	   Random rand = new Random();
        	   answer = rand.nextInt(Max)+1;  
        	  
-       	   guess = sc.nextInt();
+       	   guess = Console.sc.nextInt();
        	   
        	        
 
