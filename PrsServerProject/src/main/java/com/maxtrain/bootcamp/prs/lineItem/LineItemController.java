@@ -104,7 +104,7 @@ public class LineItemController {
 		}
 	}
 
-	@PutMapping()
+	@PutMapping("/{id}")
 	public JsonResponse update(@RequestBody LineItem line, @PathVariable Integer id) {
 		try {
 			if (id != line.getId()) {

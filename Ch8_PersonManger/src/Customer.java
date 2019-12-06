@@ -3,9 +3,15 @@ public class Customer {
 
 	public Customer() {
 		
-		public Customer( String first, String last, String number);
-		public String getCustomerNumber();
-		public void setCustomerNumber(String number);
+		String first;
+	    String last;
+	    int customerNumber;
+
+	    Person(String first, String last, int customerNumber) {
+			this.first = first;
+			this.last = last;
+			this.customerNumber = customerNumber;
+		}
 		
 	}
 
