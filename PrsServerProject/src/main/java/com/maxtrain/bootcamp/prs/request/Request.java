@@ -123,8 +123,8 @@ public class Request {
 		return submittedDate;
 	}
 
-	public void setSubmittedDate(java.util.Date date) {
-		this.submittedDate = (Date) date;
+	public void setSubmittedDate(Date submittedDate) {
+		this.submittedDate = submittedDate;
 	}
 
 	public String getReasonForRejection() {
