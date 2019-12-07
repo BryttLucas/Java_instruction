@@ -21,10 +21,10 @@ public class LineItem {
 	private int id;
 	private int quantity;
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "requestID")
+	@JoinColumn(name = "RequestID")
 	private Request request;
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "productID")
+	@JoinColumn(name = "ProductID")
 	private Product product;
 
 	public LineItem() {

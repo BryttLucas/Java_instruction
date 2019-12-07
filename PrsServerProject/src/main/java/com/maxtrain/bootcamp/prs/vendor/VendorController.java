@@ -32,10 +32,10 @@ public class VendorController {
 	public JsonResponse get(@PathVariable Integer id) {
 		try {
 			if (id == null)
-				return JsonResponse.getInstance("Paramenter id connot be null");
+				return JsonResponse.getInstance("Paramenter id connot be null.");
 			Optional<Vendor> vendor = vendorRepo.findById(id);
 			if (!vendor.isPresent()) {
-				return JsonResponse.getInstance("Vendor not Found!");
+				return JsonResponse.getInstance("Vendor not Found.");
 			}
 			return JsonResponse.getInstance(vendor.get());
 		} catch (Exception e) {
@@ -48,6 +48,7 @@ public class VendorController {
 			Vendor vend = vendorRepo.save(vendor);
 			return JsonResponse.getInstance(vend);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return JsonResponse.getInstance(e.getMessage());
 		}
 	}
@@ -87,6 +88,7 @@ public class VendorController {
 			vendorRepo.deleteById(id);
 			return JsonResponse.getInstance(vendor.get());
 		} catch (Exception e) {
+			e.printStackTrace();
 			return JsonResponse.getInstance(e.getMessage());
 		}
 

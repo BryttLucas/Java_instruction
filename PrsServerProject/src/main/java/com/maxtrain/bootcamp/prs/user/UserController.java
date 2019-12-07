@@ -32,8 +32,9 @@ public class UserController {
 			if (u == null) {
 			}
 			return JsonResponse.getInstance(u);
-		} catch (Exception ex) {
-			return JsonResponse.getInstance(ex.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e.getMessage());
 		}
 	}
 
@@ -50,11 +51,12 @@ public class UserController {
 				return JsonResponse.getInstance("Parameter id cannot be null.");
 			Optional<User> u = userRepo.findById(id);
 			if (!u.isPresent()) {
-				return JsonResponse.getInstance("User not found");
+				return JsonResponse.getInstance("User not found.");
 			}
 			return JsonResponse.getInstance(u.get());
-		} catch (Exception ex) {
-			return JsonResponse.getInstance(ex.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e.getMessage());
 		}
 	}
 
@@ -62,8 +64,9 @@ public class UserController {
 		try {
 			User u = userRepo.save(user);
 			return JsonResponse.getInstance(u);
-		} catch (Exception ex) {
-			return JsonResponse.getInstance(ex.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e.getMessage());
 		}
 	}
 
@@ -95,12 +98,13 @@ public class UserController {
 		try {
 			Optional<User> user = userRepo.findById(id);
 			if (!user.isPresent()) {
-				return JsonResponse.getInstance("User not found");
+				return JsonResponse.getInstance("User not found.");
 			}
 			userRepo.deleteById(id);
 			return JsonResponse.getInstance(user.get());
-		} catch (Exception ex) {
-			return JsonResponse.getInstance(ex.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e.getMessage());
 		}
 
 	}

@@ -50,7 +50,7 @@ public class ProductController {
 			Product prod = productRepo.save(product);
 			return JsonResponse.getInstance(prod);
 		} catch (IllegalArgumentException e) {
-			return JsonResponse.getInstance("Parameter product cannot be null");
+			return JsonResponse.getInstance("Parameter product cannot be null.");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return JsonResponse.getInstance(e);
@@ -74,7 +74,7 @@ public class ProductController {
 				return JsonResponse.getInstance("Parameter id cannot be null.");
 			return save(product);
 		} catch (Exception e) {
-			e.getStackTrace();
+			e.printStackTrace();
 			return JsonResponse.getInstance(e);
 		}
 	}

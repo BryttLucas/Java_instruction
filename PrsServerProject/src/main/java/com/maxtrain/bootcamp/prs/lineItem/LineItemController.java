@@ -75,7 +75,7 @@ public class LineItemController {
 				return JsonResponse.getInstance("Lineitem not found.");
 			return JsonResponse.getInstance(line.get());
 		} catch (Exception e) {
-			e.getStackTrace();
+			e.printStackTrace();
 			return JsonResponse.getInstance(e);
 		}
 	}
