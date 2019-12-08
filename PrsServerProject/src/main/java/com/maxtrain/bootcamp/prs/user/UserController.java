@@ -23,7 +23,7 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepo;
 
-	@PostMapping("/authenticate")
+	@PostMapping("/login")
 	public JsonResponse authenticate(@RequestBody User user) {
 		String username = user.getUsername();
 		String password = user.getPassword();

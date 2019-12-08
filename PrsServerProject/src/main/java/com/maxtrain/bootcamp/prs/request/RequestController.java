@@ -1,6 +1,6 @@
 package com.maxtrain.bootcamp.prs.request;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
