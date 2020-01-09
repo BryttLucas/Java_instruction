@@ -1,18 +1,22 @@
 
-public class Customer {
-
-	public Customer() {
-		
-		String first;
-	    String last;
-	    int customerNumber;
-
-	    Person(String first, String last, int customerNumber) {
-			this.first = first;
-			this.last = last;
-			this.customerNumber = customerNumber;
-		}
-		
+public class Customer extends Person {
+	private String number;
+	
+	public Customer (String first, String last, String number) {
+		super(first, last);
+		this.number = number;
 	}
 
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+	
+	@Override
+	public String toString() {
+		return super.toString() + "\n" + "Customer Number: " + number + "\n";
+	}
 }

@@ -37,7 +37,8 @@ public class LineItemController {
 		Iterable<LineItem> lines = lineRepo.getLineitemByRequestId(request.getId());
 		double total = 0;
 		for (LineItem line : lines) {
-			total += line.getQuantity() * line.getProduct().getPrice();
+			double subtotal = (line.getProduct().getPrice() * line.getQuantity());
+			total = subtotal;
 		}
 		request.setTotal(total);
 		request.setStatus(RequestController.REQUEST_STATUS_EDIT);

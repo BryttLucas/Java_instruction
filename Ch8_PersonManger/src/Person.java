@@ -1,49 +1,31 @@
 
 public class Person {
-
-	public Person() {
-		// display a Welcome message
-		System.out.println("Welcome to Person Manger!\n\n");
-		System.out.println();
+	private String firstname = "";
+	private String lastname = "";
+	
+	public Person(String first, String last) {
+		this.firstname = first;
+		this.lastname = last;
 	}
 
-	private String firstName;
-	private String lastName;
-	private int customerNumber;
-
-	public Person(String firstName, String lastName, int customerNumber) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.customerNumber = customerNumber;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public String getFirst() {
-		return firstName;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
-	public void setFirst(String firstName) {
-		this.firstName = firstName;
+	public String getLastname() {
+		return lastname;
 	}
 
-	public String getLast() {
-		return lastName;
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
 	}
-
-	public void setLast(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public int getCustomerNumber() {
-		return customerNumber;
-	}
-
-	public void setCustomerNumber(int customerNumber) {
-		this.customerNumber = customerNumber;
-	}
-
+	
 	@Override
 	public String toString() {
-		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", customerNumber=" + customerNumber + "]";
+		return "Name: " + firstname + " " + lastname;
 	}
 }
-	

@@ -27,7 +27,7 @@ public class Vendor {
 	@Column(length = 5, nullable = false)
 	private String zip;
 	@Column(length = 12, nullable = false)
-	private String phone;
+	private String phoneNumber;
 	@Column(length = 100, nullable = false)
 	private String email;
 
@@ -90,12 +90,12 @@ public class Vendor {
 		this.zip = zip;
 	}
 
-	public String getPhone() {
-		return phone;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getEmail() {
@@ -109,7 +109,7 @@ public class Vendor {
 	@Override
 	public String toString() {
 		return "Vendor [id=" + id + ", code=" + code + ", name=" + name + ", address=" + address + ", city=" + city
-				+ ", State=" + State + ", zip=" + zip + ", phone=" + phone + ", email=" + email + "]";
+				+ ", State=" + State + ", zip=" + zip + ", phoneNumber=" + phoneNumber + ", email=" + email + "]";
 	}
 
 }

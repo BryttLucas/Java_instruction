@@ -1,53 +1,26 @@
-package util;
+package ui;
+
+import java.util.Arrays;
 import java.util.Scanner;
-import java.lang.Object;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
+import business.Student;
 
 public class Console {
-    
+
     private static Scanner sc = new Scanner(System.in);
-
+    
     public static String getString(String prompt) {
-        System.out.print(prompt);
-        String s = sc.nextLine();  // read user entry
-       // sc.next();  // discard any other data entered on the line
-        return s;
-    }
-
-    public static int getInt(String prompt) {
-        int i = 0;
+        String s = "";
         boolean isValid = false;
         while (!isValid) {
             System.out.print(prompt);
-            if (sc.hasNextInt()) {
-                i = sc.nextInt();
+            if (sc.hasNext()) {
+                s = sc.nextLine(); // read entire line
                 isValid = true;
             } else {
-                System.out.println("Error! Invalid integer. Try again.");
-            }
-            sc.nextLine();  // discard any other data entered on the line
-        }
-        return i;
-    }
-
-    public static int getInt(String prompt, int min, int max) {
-        int i = 0;
-        boolean isValid = false;
-        while (!isValid) {
-            i = getInt(prompt);
-            if (i <= min) {
-                System.out.println(
-                        "Error! Number must be greater than " + min + ".");
-            } else if (i >= max) {
-                System.out.println(
-                        "Error! Number must be less than " + max + ".");
-            } else {
-                isValid = true;
+                System.out.println("Error! Invalid string value. Try again.");
             }
         }
-        return i;
+        return s;
     }
 
     public static double getDouble(String prompt) {
@@ -59,7 +32,8 @@ public class Console {
                 d = sc.nextDouble();
                 isValid = true;
             } else {
-                System.out.println("Error! Invalid number. Try again.");
+                sc.next();     // discard the incorrectly entered double
+                System.out.println("Error! Invalid decimal value. Try again.");
             }
             sc.nextLine();  // discard any other data entered on the line
         }
@@ -70,11 +44,11 @@ public class Console {
         double d = 0;
         boolean isValid = false;
         while (!isValid) {
-            d = getDouble(prompt);
-            if (d <= min) {
+            d = Console.getDouble(prompt);
+            if (d < min) {
                 System.out.println(
                         "Error! Number must be greater than " + min + ".");
-            } else if (d >= max) {
+            } else if (d > max) {
                 System.out.println(
                         "Error! Number must be less than " + max + ".");
             } else {
@@ -83,20 +57,48 @@ public class Console {
         }
         return d;
     }
+
+    public static int getInt(String prompt) {
+        boolean isValid = false;
+        int i = 0;
+        while (!isValid) {
+            System.out.print(prompt);
+            if (sc.hasNextInt()) {
+                i = sc.nextInt();
+                isValid = true;
+            } else {
+                sc.next();  // discard invalid data
+                System.out.println("Error! Invalid integer value. Try again.");
+            }
+            sc.nextLine();  // discard any other data entered on the line
+        }
+        return i;
+    }
+
+    public static int getInt(String prompt, int min, int max) {
+        int i = 0;
+        boolean isValid = false;
+        while (!isValid) {
+            i = Console.getInt(prompt);
+            if (i < min) {
+                System.out.println(
+                        "Error! Number must be greater than " + min + ".");
+            } else if (i > max) {
+                System.out.println(
+                        "Error! Number must be less than " + max + ".");
+            } else {
+                isValid = true;
+            }
+        }
+        return i;
+    } 
     
-	public static LocalDate getDate(String prompt) {
-		DateTimeFormatter format = DateTimeFormatter.ofPattern("M/d/y");
-		LocalDate d = null;
-		while (d == null) {
-			String dateInput = getString(prompt);
-			try {
-				d = LocalDate.parse(dateInput, format);
-			} catch (DateTimeParseException e) {
-				System.out.println("Error date must be in M/D/Y format" + e);
-			}
-
-		}
-		return d;
-
-	}
+    public static void displayStudents(Student[] students) {
+    	Arrays.sort(students);
+    	
+    	System.out.println("\nSUMMARY");
+    	for (Student s : students) {
+    		System.out.println(s.toString());
+    	}
+    }
 }

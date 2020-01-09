@@ -1,24 +1,19 @@
-package lucas.account;
 public class SavingsAccount extends Account {
-	private double monthlyInterestRate;
-	private double monthlyInterestPayment;
-
-	public SavingsAccount() {
-		
+	private double monthlyrate = 0.0;
+	private double mnthlyinterest = 0.0;
+	
+	SavingsAccount(double monthlyrate) {
+		this.monthlyrate = monthlyrate;
 	}
 
-	public SavingsAccount(double balance, double monthlyInterestRate) {
-		super();
-		this.monthlyInterestRate = monthlyInterestRate;
-	}
-
-	public void applyPaymentToBalance() {
-		// assumes montlyInterestPayment = balance * monthlyInterestRate
-		this.monthlyInterestPayment = balance * monthlyInterestRate;
-		this.balance += monthlyInterestPayment;
+	public double getMnthlyinterest() {
+		return mnthlyinterest;
 	}
 	
-	public double getMonthlyInterestPayment() {
-		return monthlyInterestPayment;
+	public void addInterestPay() {
+		double curBalance = getBalance();
+		mnthlyinterest = curBalance * monthlyrate;
+		setBalance(curBalance + mnthlyinterest);
 	}
+}
 }

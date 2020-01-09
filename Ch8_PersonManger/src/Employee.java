@@ -1,43 +1,24 @@
 
-public class Employee {
-		
-		private String first;
-	  	private String last;
-	  	private long ssn;
-	 
-	  	public void Person(String first, String last, long ssn) {
-	  		this.first = first;
-	  		this.last = last;
-	  		this.ssn = ssn; 
+public class Employee extends Person {
+	private String ssn;
+	
+	public Employee (String first, String last, String ssn) {
+		super(first, last);
+		this.ssn = ssn;
 	}
 
-		public String getFirst() {
-			return first;
-		}
+	public String getSsn() {
+		return ssn.substring(0, ssn.length()-4).replaceAll("[0-9]", "x") + 
+				ssn.substring(ssn.length()-4);
+	}
 
-		public void setFirst(String first) {
-			this.first = first;
-		}
-
-		public String getLast() {
-			return last;
-		}
-
-		public void setLast(String last) {
-			this.last = last;
-		}
-
-		public long getSsn() {
-			return ssn;
-		}
-
-		public void setSsn(long ssn) {
-			this.ssn = ssn;
-		}
-
-		@Override
-		public String toString() {
-			return "Employee [first=" + first + ", last=" + last + ", ssn=" + ssn + "]";
-		}
-
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
+	}
+	
+	@Override
+	public String toString() {
+		return super.toString() + "\n" + "SSN: " + this.getSsn() + "\n";
+	}
+	
 }

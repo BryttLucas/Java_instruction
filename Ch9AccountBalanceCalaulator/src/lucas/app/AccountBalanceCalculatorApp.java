@@ -1,62 +1,34 @@
-package lucas.app;
-import java.text.NumberFormat;
-
-import lucas.account.Account;
-import lucas.account.CheckingAccount;
-import lucas.account.SavingsAccount;
-
-
 public class AccountBalanceCalculatorApp {
 
-	private static final String Console = null;
-
 	public static void main(String[] args) {
-		System.out.println("Welcome to account balance calculator!");
-		// variable initialization
+		System.out.println("Welcome to the Account application\n");
+		System.out.println("Starting Balances");
+		System.out.println("Checking: $1,000.00");
+		System.out.println("Savings: $1,000.00\n");
+		System.out.println("Enter the transactions for the month");
+		
+		CheckingAccount c = new CheckingAccount(1.0);
+		c.setBalance(1000.0);
+		c.minusMonthlyFee();
+		
+		SavingsAccount s = new SavingsAccount(0.01);
+		s.setBalance(1000.0);
+		
 		String choice = "y";
-		CheckingAccount ca = new CheckingAccount(1000, 1);
-		SavingsAccount sa = new SavingsAccount(1000, .01);
 		
-		System.out.println("Starting Balances:");
-		printAccountBalances(ca, sa);
-		
-		System.out.println("Enter transactions for the month:");
 		while (choice.equalsIgnoreCase("y")) {
-			String txn = Console.getString("(w)ithdrawal or (d)eposit?");
-			String acct = Console.getString("(c)hecking or (s)avings?");
-			double amt = Console.getDouble("Amount?", 0, Double.POSITIVE_INFINITY);
-			
+			String transaction = Console.getString("\nWithdrawal or deposit? (w/d): ");
+			String acct = Console.getString("Checking or savings? (c/s): ");
 			Account a = null;
-			if (acct.equalsIgnoreCase("c"))
-				a = ca;
-			else if (acct.equalsIgnoreCase("s"))
-				a = sa;
-			
-			if (txn.equalsIgnoreCase("w"))
-				a.withdraw(amt);
-			else if (txn.equals("d"))
-				a.deposit(amt);
-			
-			choice = Console.getLine("Continue?");
+			if (acct.equalsIgnoreCase("c")) {
+				a = c;
+			} else if (acct.equalsIgnoreCase("s")) {
+				a = s;
+			}
+			Console.getAmount("Amount?: ", transaction, a);
+			choice = Console.getString("\nContinue? (y/n): ");
 		}
-		// apply monthly payment and fee
-		sa.applyPaymentToBalance();
-		ca.subtractMonthlyFee();
 		
-		System.out.println("Monthly Payments and Fees:");
-		System.out.println("Checking Fee:              "+ ca.getMonthlyFee());
-		System.out.println("Savings Interest Payment:  "+ sa.getMonthlyInterestPayment());
-		
-		System.out.println("Final Balances:");
-		printAccountBalances(ca, sa);
-		System.out.println("Bye");
-
+		Console.printReceipt(c, s);
 	}
-	
-	private static void printAccountBalances(CheckingAccount ca, SavingsAccount sa) {
-		NumberFormat cf = NumberFormat.getCurrencyInstance();
-		System.out.println("Checking:  "+cf.format(ca.getBalance()));
-		System.out.println("Savings:   "+cf.format(sa.getBalance()));
-	}
-
 }

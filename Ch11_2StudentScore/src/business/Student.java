@@ -1,21 +1,14 @@
 package business;
 
-
-public class Student implements Comparable {
+public class Student implements Comparable{
 	private String firstName;
 	private String lastName;
 	private int score;
-		
-	public Student() {
-		super();
-	}
 	
 	public Student(String firstName, String lastName, int score) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.score = score;
-	
 	}
 
 	public String getFirstName() {
@@ -44,16 +37,18 @@ public class Student implements Comparable {
 
 	@Override
 	public int compareTo(Object o) {
-		Student s2 =(Student)o;
-		int i = 0;
-		i = this.lastName.compareToIgnoreCase(s2.lastName);
-		if(i==0)
-			i = this.firstName.compareToIgnoreCase(s2.firstName);
-		return 0;
+		Student s = (Student) o;
+		if (this.getLastName().compareTo(s.getLastName()) == 0) {
+			return this.getFirstName().compareTo(s.getFirstName());
+		} else {
+		return this.getLastName().compareTo(s.getLastName());
+		}
 	}
+
 	@Override
 	public String toString() {
-		return lastName+ "," +firstName+ ":" +score;
+		return lastName + ", " + firstName + ": " + score;
 	}
+	
 	
 }

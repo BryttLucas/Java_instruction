@@ -4,14 +4,13 @@ import javax.annotation.Generated;
 public class Customer {
 	
 	
-	
 	private int id;
 	lenght = 30, nullable = false;
 	private String name;
-	decimal = 10,2 , nullable= false
+	decimal = 10/2,nullable= false;
 	private double sale;
 	private boolean active;
-	
+
 	public int getId() {
 		return id;
 	}

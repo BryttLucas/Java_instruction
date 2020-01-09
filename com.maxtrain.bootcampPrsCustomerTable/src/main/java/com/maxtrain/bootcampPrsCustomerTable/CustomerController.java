@@ -22,63 +22,68 @@ import ch.qos.logback.classic.Logger;
 @RestController
 @RequestMapping(value = "/customer")
 public class CustomerController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
 	@Autowired
 	private CustomerRepository customerRepo;
-	
+
 	@GetMapping()
 	public Iterable<Customer> GetAllCustomers() {
 		logger.info("Entering get all customers()");
 		return customerRepo.findAll();
 	}
+
 	@GetMapping("/{id}")
 	public Customer GetCustomer(@PathVariable Integer id) {
 		logger.info("Entering get customers({})", id);
-		if(id == null) 
+		if (id == null)
 			return null;
 		try {
-			Optional<Customer> customerOpt =  customerRepo.findById(id);
+			Optional<Customer> customerOpt = customerRepo.findById(id);
 			return customerOpt.isPresent() ? customerOpt.get() : null;
 		} catch (IllegalArgumentException e) {
-			logger.error("Exception: "+ e.getMessage() +" in customer controller get customer()");
+			logger.error("Exception: " + e.getMessage() + " in customer controller get customer()");
 			return null;
 		}
 	}
+
 	@PostMapping()
 	public Customer InsertCustomer(@RequestBody Customer customer) {
 		logger.info("Entering insert customer()");
-		if(customer == null) 
+		if (customer == null)
 			return null;
 		try {
 			return customerRepo.save(customer);
 		} catch (IllegalArgumentException e) {
-			logger.error("Exception: "+ e.getMessage() +" in customer controller insert customer()");
+			logger.error("Exception: " + e.getMessage() + " in customer controller insert customer()");
 			return null;
 		}
 	}
+
 	@PutMapping()
 	public Customer UpdateCustomer(@RequestBody Customer customer) {
 		logger.info("Entering update customer()");
-		if(customer == null) 
+		if (customer == null)
 			return null;
 		try {
 			return customerRepo.save(customer);
 		} catch (IllegalArgumentException e) {
-			logger.error("Exception: "+ e.getMessage() +" in customer controller update customer()");
+			logger.error("Exception: " + e.getMessage() + " in customer controller update customer()");
 			return null;
-		}	}
+		}
+	}
+
 	@DeleteMapping()
 	public void DeleteCustomer(@RequestBody Customer customer) {
 		logger.info("Entering delete customer()");
-		if(customer == null) 
+		if (customer == null)
 			return;
 		try {
 			customerRepo.deleteById(customer.getId());
 		} catch (IllegalArgumentException e) {
-			logger.error("Exception: "+ e.getMessage()+ " in customer controller get customer()");
-		}	
-	
+			logger.error("Exception: " + e.getMessage() + " in customer controller get customer()");
+		}
+
 	}
 }

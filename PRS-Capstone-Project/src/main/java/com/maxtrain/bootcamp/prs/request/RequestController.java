@@ -109,7 +109,7 @@ public class RequestController {
 		}
 	}
 
-	@PutMapping("/reviews/{userId}")
+	@PutMapping("/request/submit-review")
 	public JsonResponse getRequestWithStatusOfReview(@PathVariable Integer userId) {
 		try {
 			if (userId == null)
@@ -121,7 +121,7 @@ public class RequestController {
 			return JsonResponse.getInstance(e);
 		}
 	}
-
+	@GetMapping("requests/list-rewiew/{id}")
 	private JsonResponse setRequestStatus(Request request, String status) {
 		try {
 			request.setStatus(status);

@@ -16,14 +16,14 @@ public class User {
 	private int id;
 	@Column(length = 20, nullable = false)
 	private String username;
-	public User(String username, String password, String firstname, String lastname, String phone, String email,
+	public User(String username, String password, String firstName, String lastName, String phoneNumber, String email,
 			boolean isReviewer, boolean isAdmin) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.phone = phone;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
 		this.email = email;
 		this.isReviewer = isReviewer;
 		this.isAdmin = isAdmin;
@@ -32,11 +32,11 @@ public class User {
 	@Column(length = 10, nullable = false)
 	private String password;
 	@Column(length = 20, nullable = false)
-	private String firstname;
+	private String firstName;
 	@Column(length = 20, nullable = false)
-	private String lastname;
+	private String lastName;
 	@Column(length = 12, nullable = false)
-	private String phone;
+	private String phoneNumber;
 	@Column(length = 75, nullable = false)
 	private String email;
 	private boolean isReviewer;
@@ -70,30 +70,29 @@ public class User {
 		this.password = password;
 	}
 
-	public String getFirstname() {
-		return firstname;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLastname() {
-		return lastname;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public String getPhone() {
-		return phone;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
+	public void setPhone(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}	
 	public String getEmail() {
 		return email;
 	}
@@ -120,8 +119,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstname=" + firstname
-				+ ", lastname=" + lastname + ", phone=" + phone + ", email=" + email + ", isReviewer=" + isReviewer
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", email=" + email + ", isReviewer=" + isReviewer
 				+ ", isAdmin=" + isAdmin + "]";
 	}
 

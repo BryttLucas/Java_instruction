@@ -2,7 +2,7 @@ public class MovieListApp {
 
 	public static void main(String[] args) {
 		
-		ArrayList<Movie> movie = new ArrayList<Movie>();
+		 ArrayList<Movie> movie = new ArrayList<Movie1>();
 
 		System.out.println("Welcome to the Movie List Application!");
 		System.out.println();

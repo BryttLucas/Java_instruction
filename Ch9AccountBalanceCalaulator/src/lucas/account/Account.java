@@ -1,21 +1,5 @@
-package lucas.account;
-import lucas.interFace.Balanceable;
-import lucas.interFace.Depositeable;
-import lucas.interFace.Withdrawable;
-
-public class Account implements Depositeable, Withdrawable, Balanceable {
-
-	protected double balance;
-	
-	public Account() {
-		  super();
-	}
-
-	public Account(double balance) {
-		super();
-		this.balance = balance;
-	}
-
+public class Account implements Depositable, Withdrawable, Balanceable {
+	private double balance;
 	@Override
 	public double getBalance() {
 		return balance;
@@ -23,20 +7,20 @@ public class Account implements Depositeable, Withdrawable, Balanceable {
 
 	@Override
 	public void setBalance(double amount) {
-		balance = amount;
+		this.balance = amount;
 
 	}
 
 	@Override
 	public void withdraw(double amount) {
-		balance -= amount;
+		balance =- amount;
 
 	}
-    @Override
+
+	@Override
 	public void deposit(double amount) {
-		balance += amount;
+		balance =+ amount;
 
-	
+	}
 
-  }
 }

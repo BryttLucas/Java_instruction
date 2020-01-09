@@ -1,34 +1,28 @@
 package ui;
 
-import java.util.Arrays;
+import java.io.Console;
 
 import business.Student;
-import util.Console;
 
-public class StudentSoreApp {
+public class StudentScoresApp {
 
 	public static void main(String[] args) {
-		System.out.println(" Welcome to the Student Score App!");
+		System.out.println("The Student Scores application");
 		
-		int nbr = Console.getInt("How many students?", 0, 501);
+		int numStudents = Console.getInt("\nNumber of students: ", 1, 500);
+		Student[] students = new Student[numStudents];
 		
-		Student[] students = new Student [nbr];
-	
-		for(int i=0; i < nbr; i++) {
-			String lastName = Console.getString("Student Last Name: ");
-			String firstName = Console.getString("Student first Name: ");
-			int score = Console.getInt("Score  :",-1,101);
-			Student s = new Student(firstName,lastName,score);
-			students[i] = s;
-		}
-			
-		System.out.println("Summary");
-		Arrays.sort(students);
-		for(Student s: students) {
-			System.out.println(s); 
+		for (int i = 0; i < numStudents; i++) {
+			System.out.println("\nSTUDENT " + (i+1)); 
+			String lastName = Console.getString("Last name: ");
+			 String firstName = Console.getString("First name: ");
+			 int score = Console.getInt("Score: ", 0, 100);
+			 
+			 students[i] = new Student(firstName, lastName, score);
 		}
 		
-		System.out.println("Bye");
+		Console.displayStudents(students);
+
 	}
 
 }

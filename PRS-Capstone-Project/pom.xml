@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.maxtrain.bootcamp</groupId>
-	<artifactId>PrsServerProject</artifactId>
+	<artifactId>PRSConsoleProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PrsServerProject</name>
+	<name>PRSConsoleProject</name>
 	<description>Prs Capstone Back-end Service</description>
 
 	<properties>

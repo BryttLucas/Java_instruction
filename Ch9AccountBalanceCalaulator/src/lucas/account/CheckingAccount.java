@@ -1,22 +1,15 @@
-package lucas.account;
 public class CheckingAccount extends Account {
-
-	private double monthlyFee;
-	public CheckingAccount() {
-		
+	private double mthlyfee = 0.0;
+	
+	public CheckingAccount(double mthlyfee) {
+		this.mthlyfee = mthlyfee;
 	}
 
-	public double getMonthlyFee() {
-		return monthlyFee;
+	public double getMthlyfee() {
+		return mthlyfee;
 	}
-
-	public CheckingAccount(double balance, double monthlyFee) {
-		super();
-		this.monthlyFee = monthlyFee;
-	}
-
-	public void subtractMonthlyFee() {
-		//this.setBalance(getBalance() - monthlyFee);
-		this.balance -= monthlyFee;
+	
+	public void minusMonthlyFee() {
+		setBalance(getBalance() - mthlyfee);
 	}
 }

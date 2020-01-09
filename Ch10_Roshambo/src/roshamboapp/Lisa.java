@@ -1,28 +1,16 @@
-import java.util.Random;
-
+package roshamboapp;
 public class Lisa extends Player {
-
-	public Lisa() {
-		this.setName("Lisa");
-		this.generateRoshambo();
-
-	}
 
 	@Override
 	public void generateRoshambo() {
-		Random rand = new Random(System.currentTimeMillis());
-		int value = rand.nextInt(2);
-		switch(value) {
-		case 0:
-			setRoshamboValue(Roshambo.ROCK);
-		case 1:
-			setRoshamboValue(Roshambo.PAPER);
-		case 2:
-			setRoshamboValue(Roshambo.SCISSORS);
+		int n = (int)Math.random() * 2;
+		if (n == 0) {
+			this.setRoshvalue(Roshambo.rock);
+		} else if (n == 1) {
+			this.setRoshvalue(Roshambo.paper);
+		} else {
+			this.setRoshvalue(Roshambo.scissors);
 		}
-		
-
-
 	}
 
 }
