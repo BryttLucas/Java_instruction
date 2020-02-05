@@ -3,7 +3,7 @@ public class Lisa extends Player {
 
 	@Override
 	public void generateRoshambo() {
-		int n = (int)Math.random() * 2;
+		int n = (int)(Math.random() * 2+1);
 		if (n == 0) {
 			this.setRoshvalue(Roshambo.rock);
 		} else if (n == 1) {
