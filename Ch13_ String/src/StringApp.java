@@ -8,6 +8,8 @@ public class StringApp {
 
 	String message1 = "Hello";
 	{
+	}
+
 		String message2 = "World!";
 		message1 = public class StringApp {
 
@@ -75,7 +77,7 @@ public class StringApp {
         	     sbMessage.delete(5, 15);
         	     System.out.println(sbMessage);
         	     sbMessage.deleteCharAt(sbMessage.length() -1);
-        	     sbMessage.charAt(sbMessage.length()-1);
+        	     sbMessage.deleteCharAt(sbMessage.length()-1);
         	     System.out.println(sbMessage);
         	     }
 
@@ -87,7 +89,7 @@ public class StringApp {
 			}
 			return sb.toString();
 			{
-
+		
 			}
 		} else {
 			return s.substring(0, length);

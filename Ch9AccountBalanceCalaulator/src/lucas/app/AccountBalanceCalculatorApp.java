@@ -1,4 +1,7 @@
-public class AccountBalanceCalculatorApp {
+import desopo.account.*;
+import desopo.presentation.Console;
+
+public class AccountBalanceApp {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to the Account application\n");

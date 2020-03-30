@@ -92,6 +92,7 @@ public class UserController {
 		}
 
 	}
+	
 
 	@DeleteMapping("/{id}")
 	public JsonResponse delete(@PathVariable Integer id) {

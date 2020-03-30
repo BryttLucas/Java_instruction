@@ -23,7 +23,7 @@ public class ProductController {
 	@Autowired
 	private ProductRepository productRepo;
 
-	@GetMapping()
+	@GetMapping("/")
 	public JsonResponse getAll() {
 		Iterable<Product> product = productRepo.findAll();
 		return JsonResponse.getInstance(product);
@@ -57,7 +57,7 @@ public class ProductController {
 		}
 	}
 
-	@PostMapping()
+	@PostMapping("/")
 	public JsonResponse Insert(@RequestBody Product product) {
 		try {
 			return save(product);

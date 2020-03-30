@@ -67,7 +67,7 @@ public class RequestController {
 		}
 	}
 
-	@PostMapping()
+	@PostMapping("/")
 	public JsonResponse insert(@RequestBody Request request) {
 		try {
 			request.setStatus(REQUEST_STATUS_NEW);
@@ -108,62 +108,22 @@ public class RequestController {
 			return JsonResponse.getInstance(e);
 		}
 	}
-
-	@PutMapping("/request/submit-review")
-	public JsonResponse getRequestWithStatusOfReview(@PathVariable Integer userId) {
-		try {
-			if (userId == null)
-				return JsonResponse.getInstance("UserId parameter cannot be null.");
-			Iterable<Request> requests = requestRepo.getRequestByStatusAndUserIdNot(REQUEST_STATUS_REVIEW, userId);
-			return JsonResponse.getInstance(requests);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
-	@GetMapping("requests/list-rewiew/{id}")
-	private JsonResponse setRequestStatus(Request request, String status) {
-		try {
-			request.setStatus(status);
-			return save(request);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-	}
-
-	@PutMapping("/approve/{id}")
-	public JsonResponse approve(@RequestBody Request request, @PathVariable Integer id) {
-		try {
-			if (id != request.getId()) {
-				return JsonResponse.getInstance("Parameter id doesn't match request.");
+		private JsonResponse setRequestStatus(Request request, String status) {
+			try {
+				request.setStatus(status);
+				return save(request);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return JsonResponse.getInstance(e);
 			}
-			return setRequestStatus(request, REQUEST_STATUS_APPROVE);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
 	}
 
-	@PutMapping("/reject/{id}")
-	public JsonResponse reject(@RequestBody Request request, @PathVariable Integer id) {
+	@PutMapping("/submit-review")
+	public JsonResponse getRequestWithStatusOfReview(@RequestBody Request request) {
 		try {
-			if (id != request.getId()) {
-				return JsonResponse.getInstance("Parameter id doesn't match request.");
-			}
-			return setRequestStatus(request, REQUEST_STATUS_REJECTED);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return JsonResponse.getInstance(e);
-		}
-
-	}
-
-	@PutMapping("/review/{id}")
-	public JsonResponse review(@RequestBody Request request, @PathVariable Integer id) {
-		try {
-			if (id != request.getId())
-				return JsonResponse.getInstance("Parameter id does not match.");
+			Optional<Request> requests = requestRepo.findById(request.getId());
+			if (!requests.isPresent())
+				return JsonResponse.getInstance("No matching request found.");
 			request.setSubmittedDate(new Date(System.currentTimeMillis()));
 			if (request.getTotal() <= 50) {
 				return setRequestStatus(request, REQUEST_STATUS_APPROVE);
@@ -173,5 +133,41 @@ public class RequestController {
 			e.printStackTrace();
 			return JsonResponse.getInstance(e);
 		}
+	}
+	@PutMapping("/approve")
+	public JsonResponse approve(@RequestBody Request request) {
+			try {
+				Optional<Request> requests = requestRepo.findById(request.getId());
+				if (!requests.isPresent())
+					return JsonResponse.getInstance("No Request match found.");
+				return setRequestStatus(request, REQUEST_STATUS_APPROVE);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return JsonResponse.getInstance(e);
+			}
+	}
+
+	@PutMapping("/reject")
+	public JsonResponse reject(@RequestBody Request request) {
+		try {
+			Optional<Request> requests = requestRepo.findById(request.getId());
+			if (!requests.isPresent())
+				return JsonResponse.getInstance("No Request match found.");
+			return setRequestStatus(request, REQUEST_STATUS_REJECTED);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JsonResponse.getInstance(e);
+		}
+
+	}
+
+	@PutMapping("/list-review/{id}")
+	public JsonResponse review(@RequestBody Request request, @PathVariable Integer id) {
+			try {
+				return JsonResponse.getInstance(requestRepo.getRequestByStatusAndUserIdNot(REQUEST_STATUS_REVIEW, id));
+			} catch (Exception e) {
+				e.printStackTrace();
+				return JsonResponse.getInstance(e);
+			}
 	}
 }

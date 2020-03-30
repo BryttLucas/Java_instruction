@@ -1,7 +1,7 @@
 package Business;
 
 public class GamePiece {
-private String name;
+	private String name;
 	
 	public GamePiece(String name) {
 		this.name = name;

@@ -1,18 +1,18 @@
 package ch08_Inheritance_Demo;
 public class DemoApp extends AnimalApp {
-	private String blowHoleSize;
+	private String blowHole;
 
-	public DemoApp(String name, int limbs, int age, String type,String blowHoleSize) {
+	public DemoApp(String name, int limbs, int age, String type,String blowHole) {
 		super(name, limbs, age, type);
-		this.blowHoleSize=blowHoleSize;
+		this.blowHole=blowHole;
 	}
 
-	public String getBlowHoleSize() {
-		return blowHoleSize;
+	public String getBlowHole) {
+		return blowHole;
 	}
 
-	public void setBlowHoleSize(String blowHoleSize) {
-		this.blowHoleSize = blowHoleSize;
+	public void setBlowHole(String blowHole) {
+		this.blowHole = blowHole;
 	}
 	
 	public void swims() {

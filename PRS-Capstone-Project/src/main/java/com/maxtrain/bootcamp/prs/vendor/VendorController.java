@@ -53,7 +53,7 @@ public class VendorController {
 		}
 	}
 
-	@PostMapping()
+	@PostMapping("/")
 	public JsonResponse insert(@RequestBody Vendor vendor) {
 		try {
 			return save(vendor);

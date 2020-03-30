@@ -1,20 +1,18 @@
-import java.util.Date;
-
 public class Actor {
 
 	private int id;
 	private String firstName;
 	private String lastName;
 	private String gender;
-	private Date birthDate;
+	private String birthDate;
 	
-	public Actor() {
-		id = 0;
-		firstName = "";
-		lastName  = "";
-		gender    = "";
-		birthDate = 0;
-			
+	public Actor(int id, String firstName, String lastName, String gender, String birthDate) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = gender;
+		this.birthDate = birthDate;
 	}
 
 	public int getId() {
@@ -25,20 +23,20 @@ public class Actor {
 		this.id = id;
 	}
 
-	public String getFirstname() {
+	public String getFirstName() {
 		return firstName;
 	}
 
-	public void setFirstname(String firstname) {
-		this.firstName = firstname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getLastname() {
+	public String getLastName() {
 		return lastName;
 	}
 
-	public void setLastname(String lastname) {
-		this.lastName = lastname;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getGender() {
@@ -49,19 +47,20 @@ public class Actor {
 		this.gender = gender;
 	}
 
-	public Date getBirthdate() {
+	public String getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthdate(Date birthdate) {
-		this.birthDate = birthdate;
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
 	}
-
-	@Override
+	
 	public String toString() {
-		return "Actor [id=" + id + ", firstname=" + firstName + ", lastname=" + lastName + ", gender=" + gender
-				+ ", birthdate=" + birthDate + "]";
+		String s = "ID: " + id + " Name: "+ firstName +" "+ lastName +" Gender: "+ gender + " Birth Date: " + birthDate;
+		return s;
 	}
-
+	
+	
+	
 }
 

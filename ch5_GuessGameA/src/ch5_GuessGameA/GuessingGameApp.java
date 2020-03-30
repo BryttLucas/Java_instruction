@@ -1,3 +1,4 @@
+package ch5_GuessGameA;
 import java.util.Scanner;
 
 public class GuessingGameApp {

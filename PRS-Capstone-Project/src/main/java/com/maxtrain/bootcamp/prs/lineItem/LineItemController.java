@@ -45,7 +45,7 @@ public class LineItemController {
 		requestRepo.save(request);
 	}
 
-	@GetMapping("/request/{id}")
+	@GetMapping("/lines-for-pr/{id}")
 	public JsonResponse getByRequest(@PathVariable Integer id) {
 		try {
 			Iterable<LineItem> lines = lineRepo.getLineitemByRequestId(id);
@@ -56,7 +56,7 @@ public class LineItemController {
 		}
 	}
 
-	@GetMapping()
+	@GetMapping("/")
 	public JsonResponse getAll() {
 		try {
 			return JsonResponse.getInstance(lineRepo.findAll());
@@ -93,7 +93,7 @@ public class LineItemController {
 		}
 	}
 
-	@PostMapping()
+	@PostMapping("/")
 	private JsonResponse insert(@RequestBody LineItem line) {
 		try {
 			JsonResponse jr = save(line);

@@ -1,9 +1,12 @@
+package db;
+
 import java.util.ArrayList;
+import business.Movie;
 
 public class MovieIO {
-
     public static ArrayList<Movie> getMovies() {
         ArrayList<Movie> movies = new ArrayList<>();
+        
         movies.add(new Movie("Citizen Kane", "drama"));
         movies.add(new Movie("Casablanca", "drama"));
         movies.add(new Movie("The Godfather", "drama"));
@@ -105,5 +108,16 @@ public class MovieIO {
         movies.add(new Movie("Guess Who's Coming To Dinner", "drama"));
         movies.add(new Movie("Yankee Doodle Dandy", "musical"));
         return movies;
-    }    
+    }
+    
+    public ArrayList<Movie> getMovies(String genre) {
+    	ArrayList<Movie> byCategory = new ArrayList<Movie>();
+    	for(Movie movie : getMovies()) {
+    		if(movie.getCategory().equals(genre)) {
+    			byCategory.add(movie);
+    		}
+    	}
+    	
+    	return byCategory;
+    }
 }
