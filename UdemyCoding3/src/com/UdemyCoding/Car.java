@@ -9,6 +9,7 @@ public class Car {
 	private String color;
 	public int getDoors() {
 		return doors;
+		
 	}
 	public void setDoors(int doors) {
 		this.doors = doors;
@@ -23,8 +24,12 @@ public class Car {
 		return model;
 	}
 	public void setModel(String model) {
+		String validModel = model.toLowerCase();
+		if(validModel.equals("carrera") || validModel.equals("commodre")) {
 		this.model = model;
-	}
+	  }else {
+		this.model ="Unknown";
+	   }
 	public String getEngine() {
 		return engine;
 	}
