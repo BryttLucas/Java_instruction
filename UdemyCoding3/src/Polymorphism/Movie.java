@@ -63,8 +63,7 @@ class Forgetable extends Movie {
 		super("Forgetable");
 
 	}
-  }
-	
+}
 
 public class Main {
 
@@ -95,11 +94,6 @@ public class Main {
 			return new StarWars();
 			
 		case 5:
-			return new Forgetable();	
-			
-		}
-		return null;
+			return new Forgetable()	
+		}		
 	}
-}
-
-	
